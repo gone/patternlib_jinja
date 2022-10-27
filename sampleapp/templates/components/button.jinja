@@ -33,7 +33,10 @@
 {% endmacro %}
 
 {% if is_pattern_library %}
-   {{ button() }}
+    {{ button(button_content=text) }}
+    {{ button(button_content=button_text_test) }}
+    {{ button(button_content=button_text_test_specific) }}
+
 {% endif %}
 
 {#

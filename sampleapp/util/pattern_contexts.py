@@ -23,6 +23,24 @@ def add_field(context, request):
     context["field"] = form["single_line_text"]
 
 
+@register_context_modifier
+def add_button_text(context, request):
+    context["button_text_test"] = "this is coming from a global context modifer"
+
+@register_context_modifier(template="components/button.jinja")
+def add_button_text_specific(context, request):
+    context["button_text_test_specific"] = "this is coming from a template specific context modifer"
+
+
+@register_context_modifier
+def add_include_text(context, request):
+    context["global"] = "global template"
+
+@register_context_modifier(template="components/child.jinja")
+def add_include_text_specific(context, request):
+    context["template_specific"] = "this is coming from a template specific context modifer"
+
+
 @register_context_modifier(template="forms/select.jinja")
 def add_select(context, request):
     form = ExampleForm()
